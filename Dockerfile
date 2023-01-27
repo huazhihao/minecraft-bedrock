@@ -16,13 +16,13 @@ RUN apk --no-cache add unzip wget && \
   wget -nv https://minecraft.azureedge.net/bin-linux/bedrock-server-$CORE_VERSION.zip -O /tmp/bedrock.zip
 RUN unzip -q /tmp/bedrock.zip -d $SERVER_PATH && \
   rm -rf $SERVER_PATH/bedrock_server_symbols.debug && \
-  mv $SERVER_PATH/permissions.json $DEFAULT_CONFIG_PATH/ && \
   mv $SERVER_PATH/allowlist.json $DEFAULT_CONFIG_PATH/ && \
   rm /tmp/bedrock.zip
 
 # COPY ./profile/mcpe $DEFAULT_CONFIG_PATH
 COPY ./script $SCRIPT_PATH
 COPY ./server.properties $DEFAULT_CONFIG_PATH/
+COPY ./permissions.json $DEFAULT_CONFIG_PATH/
 
 ##################  for relaese  #########################
 # FROM ubuntu:18.04 as production
