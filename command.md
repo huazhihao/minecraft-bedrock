@@ -1,1 +1,2 @@
 gamerule showcoordinates true
+gamerule doWeatherCycle false
